@@ -14,3 +14,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contactForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message')
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    const messageError = document.getElementById('messageError');
+    const formError = document.getElementById('formError');
+
+    form.addEventListener('submit', (event) => {
+        nameError.textContent = '';
+        emailError.textContent = '';
+        messageError.textContent = '';
+        formError.textContent = '';
+
+        let isValid = true;
+
+        if (nameInput.value.trim() === '') {
+            nameError.textContent = 'Name is required';
+            isValid = false;
+        }
+
+        if (emailInput.value.trim() === '') {
+            emailError.textContent = 'Email is required.';
+            isValid = false;
+        } else if (!validateEmail(emailInput.value)) {
+            emailError.textContent = 'Please enter a valid email';
+            isValid = false;
+        }
+
+        if (messageInput.value.trim() === ''){
+            messageError.textContent = 'Message is required';
+            isValid = false;
+        }
+
+        if (!isValid) {
+            formError.textContent = 'Please fix errors before submitting.';
+            event.preventDefault();
+        }
+    });
+
+    function validateEmail(email) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+    }
+});

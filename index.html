@@ -38,7 +38,7 @@
             <div class="details" style="display: none;">
                 <p>This is a placeholder for your projects. In future chapters, you’ll add real projects here.</p>
 
-                
+
             </div>
         </div>
         
@@ -48,7 +48,23 @@
     <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Me</h2>
-        <p>In the future, this will be a contact form. For now, just leave this as a placeholder.</p>
+        <form id="contactform">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required>
+            <span class="error" id="nameError"></span>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+            <span class="error" id="emailError"></span>
+
+            <label for="message">Message:</label>
+            <textarea name="message" id="message" required></textarea>
+            <span class="error" id="messageError"></span>
+
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+            <span class="error" id="formError"></span>
+        </form>
     </section>
 
     <!-- Footer Section -->
